@@ -16,6 +16,11 @@ class PostsController < ApplicationController
   	end
   end
 
+  def like
+    like = @post.likes.build(user: current_user)
+    like.save
+  end
+
 	private
 
 	def post_params
