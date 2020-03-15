@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+  belongs_to :manager, foreign_key: :manager_id, class_name: 'User'
+  has_many :employees, foreign_key: :manager_id, class_name: 'User',
+           source: :user
 end
